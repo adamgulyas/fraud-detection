@@ -1,6 +1,8 @@
-DROP VIEW small_transactions;
-DROP VIEW early_transactions;
-DROP VIEW vulnerable_merchants;
+DROP VIEW IF EXISTS small_transactions;
+DROP VIEW IF EXISTS early_transactions;
+DROP VIEW IF EXISTS vulnerable_merchants;
+DROP VIEW IF EXISTS fraudulent_transactions;
+DROP VIEW IF EXISTS unauthorized_transactions;
 
 -- Count the transactions that are less than $2.00 per cardholder
 CREATE VIEW small_transactions AS
@@ -54,13 +56,35 @@ LIMIT
 -- The two most important customers of the firm may have been hacked.
 -- Verify if there are any fraudulent transactions in their history.
 -- For privacy reasons, you only know that their cardholder IDs are 2 and 18.
+CREATE VIEW fraudulent_transactions AS
 SELECT
     cc.cardholder_id,
     t.amount,
     t.date
-FROM "transaction" AS t
-JOIN "credit_card" AS cc ON cc.card = t.card
-JOIN "card_holder" AS ch ON ch.id = cc.cardholder_id
-WHERE cc.cardholder_id = 2
-OR cc.cardholder_id = 18
-ORDER BY t.date ASC
+FROM
+    "transaction" AS t
+    JOIN "credit_card" AS cc ON t.card = cc.card
+WHERE
+    cc.cardholder_id = 2
+    OR cc.cardholder_id = 18
+ORDER BY
+    t.date ASC
+;
+
+-- The CEO of the biggest customer of the firm suspects that someone has used
+-- her corporate credit card without authorization in the first quarter of 2018
+-- to pay quite expensive restaurant bills. Again, for privacy reasons, you
+-- know only that the cardholder ID in question is 25.
+CREATE VIEW unauthorized_transactions AS
+SELECT
+    cc.cardholder_id,
+    t.amount,
+    t.date
+FROM
+    "transaction" AS t
+    JOIN "credit_card" AS cc ON t.card = cc.card
+WHERE
+    cc.cardholder_id = 25
+ORDER BY
+    t.amount DESC
+;
