@@ -143,3 +143,31 @@ Although there is fraudulent activity during this time frame, the early morning 
 |99|107|11.68|Sun Feb 25 2018 07:37:03 GMT-0500|
 |100|16|11.65|Fri May 04 2018 08:21:59 GMT-0400|
 
+### Top 5 Vulnerable Merchants
+
+Based on the highest frequency of small transactions, these are the top 5 merchants vulnerable to this type of fraud.
+
+| # | Merchant ID | Name | Small Transactions |
+|---|-------------|------|--------------------|
+|1|141|Wood-Ramirez|7|
+|2|145|Hood-Phillips|6|
+|3|48|Baker Inc|6|
+|4|119|Henderson and Sons|5|
+|5|30|Atkinson Ltd|5|
+
+
+
+### Transaction Patterns
+
+![Card Holder 2 Line Plot](./images/cardholder-2.png)
+
+![Card Holder 2 Line Plot](./images/cardholder-18.png)
+
+![All Card Holders Line Plot](./images/cardholder-all.png)
+
+![Card Holder 25 Monthly Box Plot](./images/monthly-box-plot.png)
+
+
+
+
+
