@@ -1,3 +1,4 @@
+-- Drop views if they already exist
 DROP VIEW IF EXISTS small_transactions;
 DROP VIEW IF EXISTS early_transactions;
 DROP VIEW IF EXISTS vulnerable_merchants;
@@ -53,9 +54,7 @@ LIMIT
     5
 ;
 
--- The two most important customers of the firm may have been hacked.
--- Verify if there are any fraudulent transactions in their history.
--- For privacy reasons, you only know that their cardholder IDs are 2 and 18.
+-- Verify if there are any fraudulent transactions in the history of specific card holders
 CREATE VIEW fraudulent_transactions AS
 SELECT
     cc.cardholder_id,
@@ -71,10 +70,7 @@ ORDER BY
     t.date ASC
 ;
 
--- The CEO of the biggest customer of the firm suspects that someone has used
--- her corporate credit card without authorization in the first quarter of 2018
--- to pay quite expensive restaurant bills. Again, for privacy reasons, you
--- know only that the cardholder ID in question is 25.
+-- Get transactions for a specific card holder and order and sort from largest to smallest
 CREATE VIEW unauthorized_transactions AS
 SELECT
     cc.cardholder_id,
