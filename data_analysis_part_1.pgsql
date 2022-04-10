@@ -5,15 +5,15 @@ DROP VIEW vulnerable_merchants;
 -- Count the transactions that are less than $2.00 per cardholder
 CREATE VIEW small_transactions AS
 SELECT
-    c.cardholder_id,
-    COUNT(c.cardholder_id) AS "transactions"
+    cc.cardholder_id,
+    COUNT(cc.cardholder_id) AS "transactions"
 FROM
     "transaction" AS t
-    JOIN "credit_card" AS c ON t.card = c.card
+    JOIN "credit_card" AS cc ON t.card = cc.card
 WHERE
     t.amount < 2
 GROUP BY
-    c.cardholder_id
+    cc.cardholder_id
 ORDER BY
     transactions DESC
 ;
@@ -51,4 +51,16 @@ LIMIT
     5
 ;
 
---
+-- The two most important customers of the firm may have been hacked.
+-- Verify if there are any fraudulent transactions in their history.
+-- For privacy reasons, you only know that their cardholder IDs are 2 and 18.
+SELECT
+    cc.cardholder_id,
+    t.amount,
+    t.date
+FROM "transaction" AS t
+JOIN "credit_card" AS cc ON cc.card = t.card
+JOIN "card_holder" AS ch ON ch.id = cc.cardholder_id
+WHERE cc.cardholder_id = 2
+OR cc.cardholder_id = 18
+ORDER BY t.date ASC
