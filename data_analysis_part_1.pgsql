@@ -30,7 +30,7 @@ FROM
 WHERE
     EXTRACT(HOUR FROM date) BETWEEN 7 AND 8
 ORDER BY
-    date ASC
+    amount DESC
 LIMIT
     100
 ;
