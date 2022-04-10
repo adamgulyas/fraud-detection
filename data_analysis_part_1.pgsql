@@ -31,7 +31,8 @@ WHERE
     EXTRACT(HOUR FROM date) BETWEEN 7 AND 8
 ORDER BY
     date ASC
-LIMIT 100
+LIMIT
+    100
 ;
 
 -- Get the top 5 merchants prone to being hacked using small transactions
@@ -80,7 +81,8 @@ FROM
     "transaction" AS t
     JOIN "credit_card" AS cc ON t.card = cc.card
 WHERE
-    cc.cardholder_id = 25
+    cc.cardholder_id = 25 AND
+    EXTRACT(MONTH FROM date) BETWEEN 1 AND 6
 ORDER BY
-    t.amount DESC
+    t.date ASC
 ;
