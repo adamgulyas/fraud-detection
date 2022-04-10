@@ -17,3 +17,13 @@ FROM transaction
 WHERE EXTRACT("hour" from "date") BETWEEN 7 AND 8
 ORDER BY amount DESC
 LIMIT 100;
+
+
+-- What are the top 5 merchants prone to being hacked using small transactions?
+SELECT t.id_merchant, COUNT(t.id_merchant) AS small_transactions, m.name
+FROM transaction AS t
+JOIN merchant AS m
+ON t.id_merchant = m.id
+WHERE amount < 2
+GROUP BY id_merchant, m.name
+ORDER BY t.id_merchant DESC
