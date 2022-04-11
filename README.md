@@ -159,15 +159,21 @@ Based on the highest frequency of small transactions, these are the top 5 mercha
 
 ### Transaction Patterns
 
+Card holder 2 has a record of consistent transaction amounts between $1 and $20. It appears nothing suspicious is happening here.
+
 ![Card Holder 2 Line Plot](./images/cardholder-2.png)
+
+Card holder 18 displays a pattern of anomalous transaction amounts. There is cause for suspicion of fraudulent transactions here because the anomalous transaction amounts are much larger than the transaction amounts made between them.
+
+On the other hand, this card holder may simply be using the same credit card for daily spending *and* making large purchases. More data may be required to determine if fraud is present.
 
 ![Card Holder 2 Line Plot](./images/cardholder-18.png)
 
+Based on the comparison between the two credit card transaction histories, it is clear that the anomalous transaction values are far outside of the standard deviation. This would further suggest that fraud is present.
+
 ![All Card Holders Line Plot](./images/cardholder-all.png)
 
+In this box plot, outliers occur about 1.5 times per month. May's upper quartile group is much higher than the other months, suggesting that this could be a month to zoom in on for more fraudulent activity.
+
 ![Card Holder 25 Monthly Box Plot](./images/monthly-box-plot.png)
-
-
-
-
 
