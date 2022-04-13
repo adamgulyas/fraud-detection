@@ -2,7 +2,7 @@
 
 ## Entity Relationship Diagram
 
-Here is the structure of the Fraud Detection database to make the analysis easier to understand.
+Here is the structure of the Fraud Detection database to help understand the following analysis.
 
 ![Entity Relationship Diagram](./images/ERD.png)
 
