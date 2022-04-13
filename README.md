@@ -1,5 +1,11 @@
 # Detecting Suspicious Transactions
 
+## Entity Relationship Diagram
+
+Here is the structure of the Fraud Detection database to make the analysis easier to understand.
+
+![Entity Relationship Diagram](./images/ERD.png)
+
 ## Data Analysis
 
 ### Small Transactions
